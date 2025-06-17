@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>چاپار - پیامرسان نسل آینده</title>
+    <script src="C:\Users\daradege\Desktop\chapaar\tailwind.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-strong {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .floating-animation {
+            animation: floating 8s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(90deg); }
+            50% { transform: translateY(0px) rotate(180deg); }
+            75% { transform: translateY(20px) rotate(270deg); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 3s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(102, 126, 234, 0.4),
+                           0 0 40px rgba(102, 126, 234, 0.2),
+                           inset 0 0 20px rgba(102, 126, 234, 0.1);
+            }
+            50% { 
+                box-shadow: 0 0 40px rgba(102, 126, 234, 0.8),
+                           0 0 80px rgba(102, 126, 234, 0.4),
+                           inset 0 0 30px rgba(102, 126, 234, 0.2);
+            }
+        }
+        
+        .slide-in {
+            animation: slideIn 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(60px);
+        }
+        
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .slide-right {
+            animation: slideRight 1s ease-out forwards;
+            opacity: 0;
+            transform: translateX(-60px);
+        }
+        
+        @keyframes slideRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .slide-left {
+            animation: slideLeft 1s ease-out forwards;
+            opacity: 0;
+            transform: translateX(60px);
+        }
+        
+        @keyframes slideLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
+        .stagger-7 { animation-delay: 0.7s; }
+        .stagger-8 { animation-delay: 0.8s; }
+        
+        .hover-lift {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 4s ease-in-out infinite;
+            background-size: 200% 200%;
+        }
+        
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .feature-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        
+        .neon-border {
+            position: relative;
+            border: 2px solid transparent;
+            background: linear-gradient(135deg, #667eea, #764ba2) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+        }
+        
+        .neon-glow {
+            box-shadow: 
+                0 0 20px rgba(102, 126, 234, 0.3),
+                0 0 40px rgba(102, 126, 234, 0.2),
+                0 0 60px rgba(102, 126, 234, 0.1),
+                inset 0 0 20px rgba(102, 126, 234, 0.05);
+        }
+        
+        .typing-animation::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::before {
+            width: 100%;
+        }
+        
+        .feature-icon-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .feature-icon-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.2), transparent);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon-wrapper::before {
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+        
+        .stats-counter {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+        }
+        
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .tech-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+        }
+        
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0.6;
+            animation: particle-float 15s linear infinite;
+        }
+        
+        @keyframes particle-float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-black text-white overflow-x-hidden">
+    <div class="fixed inset-0 opacity-20">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl floating-animation"></div>
+        <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl floating-animation" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl floating-animation" style="animation-delay: 4s;"></div>
+        <div class="absolute top-1/2 right-1/3 w-64 h-64 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl floating-animation" style="animation-delay: 6s;"></div>
+    </div>
+
+    <nav class="fixed top-0 w-full z-50 glass-strong">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-6 space-x-reverse">
+                    <div class="relative">
+                        <div class="w-14 h-14 bg-gradient-to-br from-purple-500 via-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center pulse-glow neon-glow">
+                            <span class="text-2xl font-black">چ</span>
+                        </div>
+                        <div class="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
+                    </div>
+                    <div>
+                        <span class="text-3xl font-black text-gradient">چاپار</span>
+                        <div class="text-xs text-gray-400 typing-animation">نسل جدید پیامرسان</div>
+                    </div>
+                </div>
+                
+                <div class="hidden lg:flex items-center space-x-8 space-x-reverse">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-white font-medium">خانه</a>
+                    <a href="#features" class="nav-link text-gray-300 hover:text-white font-medium">ویژگی‌ها</a>
+                    <a href="#security" class="nav-link text-gray-300 hover:text-white font-medium">امنیت</a>
+                    <a href="#technology" class="nav-link text-gray-300 hover:text-white font-medium">فناوری</a>
+                    <a href="#testimonials" class="nav-link text-gray-300 hover:text-white font-medium">نظرات</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-white font-medium">تماس</a>
+                </div>
+                
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <button class="hidden md:block glass-effect px-6 py-2 rounded-full text-sm font-medium hover:bg-white/10 transition-all duration-300">
+                        ورود
+                    </button>
+                    <button class="bg-gradient-to-r from-purple-500 via-blue-500 to-indigo-600 px-8 py-3 rounded-full font-bold text-sm hover:from-purple-600 hover:via-blue-600 hover:to-indigo-700 transition-all duration-300 pulse-glow neon-glow transform hover:scale-105">
+                        <i class="fas fa-download ml-2"></i>
+                        دانلود
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="relative min-h-screen flex items-center justify-center px-6 pt-20">
+        <div class="text-center max-w-7xl mx-auto">
+            <div class="mb-8 slide-in stagger-1">
+                <span class="inline-block glass-effect px-6 py-2 rounded-full text-sm font-medium mb-6">
+                    <i class="fas fa-rocket ml-2 text-purple-400"></i>
+                    آینده پیامرسانی اینجاست
+                </span>
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-black mb-8 slide-in stagger-2">
+                <span class="text-gradient">چاپار</span>
+                <div class="text-4xl md:text-6xl lg:text-7xl text-gray-300 font-light mt-4">
+                    پیامرسان نسل آینده
+                </div>
+            </h1>
+            
+            <p class="text-xl md:text-2xl lg:text-3xl mb-6 text-gray-300 max-w-4xl mx-auto slide-in stagger-3">
+                تجربه‌ای انقلابی از ارتباط با امنیت نظامی، سرعت نور و ویژگی‌های بی‌نظیر
+            </p>
+            
+            <p class="text-lg md:text-xl mb-12 text-gray-400 max-w-5xl mx-auto leading-relaxed slide-in stagger-4">
+                پیام‌هایت هرگز گم نمی‌شوند، رسانه‌هایت برای همیشه محفوظ می‌مانند و حتی ما هم نمی‌تونیم محتواهات رو ببینیم. 
+                ویژگی‌های خلاقانه‌ای که تا حالا ندیدی رو تجربه کن.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 slide-in stagger-5">
+                <button class="group bg-gradient-to-r from-purple-500 via-blue-500 to-indigo-600 px-12 py-5 rounded-full text-xl font-bold hover:from-purple-600 hover:via-blue-600 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 pulse-glow neon-glow">
+                    <i class="fas fa-play ml-3 group-hover:ml-4 transition-all"></i>
+                    شروع کنید
+                </button>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto slide-in stagger-6">
+                <div class="glass-effect p-6 rounded-2xl hover-lift">
+                    <div class="text-3xl font-black text-gradient stats-counter">10M+</div>
+                    <div class="text-gray-400 text-sm mt-2">کاربر فعال</div>
+                </div>
+                <div class="glass-effect p-6 rounded-2xl hover-lift">
+                    <div class="text-3xl font-black text-gradient stats-counter">99.9%</div>
+                    <div class="text-gray-400 text-sm mt-2">آپتایم</div>
+                </div>
+                <div class="glass-effect p-6 rounded-2xl hover-lift">
+                    <div class="text-3xl font-black text-gradient stats-counter">256bit</div>
+                    <div class="text-gray-400 text-sm mt-2">رمزنگاری</div>
+                </div>
+                <div class="glass-effect p-6 rounded-2xl hover-lift">
+                    <div class="text-3xl font-black text-gradient stats-counter"><1ms</div>
+                    <div class="text-gray-400 text-sm mt-2">تأخیر</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute top-32 left-10 w-6 h-6 bg-purple-500/70 rounded-full floating-animation blur-sm"></div>
+        <div class="absolute top-48 right-20 w-4 h-4 bg-blue-500/70 rounded-full floating-animation blur-sm" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-48 left-24 w-8 h-8 bg-indigo-500/70 rounded-full floating-animation blur-sm" style="animation-delay: 3s;"></div>
+        <div class="absolute top-60 right-32 w-3 h-3 bg-pink-500/70 rounded-full floating-animation blur-sm" style="animation-delay: 5s;"></div>
+    </section>
+
+    <section id="features" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl md:text-7xl font-black mb-8 slide-in">
+                    <span class="text-gradient">ویژگی‌های بی‌نظیر</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto slide-in stagger-1">
+                    چاپار با فناوری‌های پیشرفته و ویژگی‌های انحصاری، تجربه‌ای کاملاً متفاوت از پیامرسانی ارائه می‌دهد
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8 mb-20">
+                <div class="feature-card glass-strong p-10 rounded-3xl hover-lift slide-in stagger-1">
+                    <div class="feature-icon-wrapper mb-8">
+                        <div class="w-20 h-20 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center text-3xl neon-glow">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 text-gradient">امنیت نظامی</h3>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        رمزنگاری End-to-End با الگوریتم‌های پیشرفته که حتی ما هم نمی‌تونیم پیام‌هاتون رو بخونیم. 
+                        امنیت در سطح سازمان‌های نظامی و اطلاعاتی.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i class="fas fa-check text-green-400 ml-3"></i>
+                            رمزنگاری AES-256
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i class="fas fa-check text-green-400 ml-3"></i>
+                            Perfect Forward Secrecy
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i class="fas fa-check text-green-400 ml-3"></i>
+                            Zero-Knowledge Architecture
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card glass-strong p-10 rounded-3xl hover-lift slide-in stagger-2">
+                    <div class="feature-icon-wrapper mb-8">
+                        <div class="w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center text-3xl neon-glow">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 text-gradient">سرعت نور</h3>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        پیام‌ها با سرعت باورنکردنی ارسال و دریافت می‌شن. فایل‌های حجیم در چشم به هم زدن منتقل می‌شن.
+                        بهینه‌سازی شده برای شبکه‌های کم سرعت.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i class="fas fa-check text-green-400 ml-3"></i>
+                            تأخیر زیر 1 میلی‌ثانیه
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i class="fas fa-check text-green-400 ml-3"></i>
+                            فشرده‌سازی هوشمند
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i class="fas fa-check text-green-400 ml-3"></i>
+                            CDN جهانی
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card glass-strong p-10 rounded-3xl hover-lift slide-in stagger-3">
+                    <div class="feature-icon-wrapper mb-8">
+                        <div class="w-20 h-20 bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl flex items-center justify-center text-3xl neon-glow">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 text-gradient">Real-Time مطلق</h3>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        همه چیز به صورت لحظه‌ای. تایپ کردن، آنلاین بودن، خوندن پیام‌ها، حتی حرکات موس!
+                        سینک کامل بین همه دستگاه‌ها.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i class="fas fa-check text-green-400 ml-3"></i>
+                            WebSocket پیشرفته
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i class="fas fa-check text-green-400 ml-3"></i>
+                            Live Typing Indicator
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i class="fas fa-check text-green-400 ml-3"></i>
+                            Instant Sync
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="feature-card glass-strong p-10 rounded-3xl hover-lift slide-in stagger-4">
+                    <div class="feature-icon-wrapper mb-8">
+                        <div class="w-20 h-20 bg-gradient-to-br from-red-400 to-pink-500 rounded-2xl flex items-center justify-center text-3xl neon-glow">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 text-gradient">غیرقابل نفوذ</h3>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        حتی خود عوامل چاپار هم نمی‌تونن پیام‌هاتون رو بخونن یا حذف کنن. 
+                        کنترل کامل در دست شماست. هیچ backdoor یا راه خلفی وجود نداره.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i class="fas fa-check text-green-400 ml-3"></i>
+                            No Backdoors
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i class="fas fa-check text-green-400 ml-3"></i>
+                            Open Source Crypto
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i class="fas fa-check text-green-400 ml-3"></i>
+                            User-Controlled Keys
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card glass-strong p-10 rounded-3xl hover-lift slide-in stagger-5">
+                    <div class="feature-icon-wrapper mb-8">
+                        <div class="w-20 h-20 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-2xl flex items-center justify-center text-3xl neon-glow">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 text-gradient">ذخیره ابدی</h3>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        تمام عکس‌ها، ویدیوها و فایل‌هاتون با کیفیت اصلی برای همیشه محفوظ. 
+                        فضای نامحدود، دسترسی از همه جا، بدون محدودیت زمانی.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i class="fas fa-check text-green-400 ml-3"></i>
+                            فضای نامحدود
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i class="fas fa-check text-green-400 ml-3"></i>
+                            کیفیت اصلی
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i class="fas fa-check text-green-400 ml-3"></i>
+                            Blockchain Backup
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card glass-strong p-10 rounded-3xl hover-lift slide-in stagger-6">
+                    <div class="feature-icon-wrapper mb-8">
+                        <div class="w-20 h-20 bg-gradient-to-br from-violet-400 to-purple-500 rounded-2xl flex items-center justify-center text-3xl neon-glow">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 text-gradient">ویژگی‌های بمب</h3>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        ایده‌های خلاقانه و انقلابی برای اشتراک‌گذاری که تا حالا ندیدید. 
+                        هوش مصنوعی، واقعیت افزوده و تعامل‌های جادویی.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i class="fas fa-check text-green-400 ml-3"></i>
+                            AI Smart Reply
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i class="fas fa-check text-green-400 ml-3"></i>
+                            AR Sharing
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i class="fas fa-check text-green-400 ml-3"></i>
+                            Magic Interactions
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="security" class="py-32 px-6 bg-gradient-to-b from-black to-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="slide-right stagger-1">
+                    <div class="mb-8">
+                        <span class="inline-block glass-effect px-4 py-2 rounded-full text-sm font-medium mb-6">
+                            <i class="fas fa-shield-alt ml-2 text-green-400"></i>
+                            امنیت پیشرفته
+                        </span>
+                    </div>
+                    <h2 class="text-5xl md:text-6xl font-black mb-8 text-gradient">امنیت مطلق</h2>
+                    <p class="text-xl text-gray-300 mb-12 leading-relaxed">
+                        چاپار با استفاده از آخرین فناوری‌های رمزنگاری و پروتکل‌های امنیتی، 
+                        بالاترین سطح حفاظت را برای کاربرانش فراهم می‌کند. امنیتی که حتی دولت‌ها نمی‌تونن نقض کنن.
+                    </p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-6 space-x-reverse group">
+                            <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center neon-glow group-hover:scale-110 transition-all duration-300">
+                                <i class="fas fa-key text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-gradient">رمزنگاری End-to-End پیشرفته</h3>
+                                <p class="text-gray-400 leading-relaxed">
+                                    استفاده از الگوریتم Signal Protocol با بهبودهای اختصاصی. 
+                                    هر پیام با کلید منحصر به فرد رمز می‌شه.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-6 space-x-reverse group">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center neon-glow group-hover:scale-110 transition-all duration-300">
+                                <i class="fas fa-fingerprint text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-gradient">احراز هویت چندمرحله‌ای</h3>
+                                <p class="text-gray-400 leading-relaxed">
+                                    تشخیص اثر انگشت، تشخیص چهره، کد OTP و پین امنیتی. 
+                                    امنیت لایه به لایه برای محافظت کامل.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-6 space-x-reverse group">
+                            <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl flex items-center justify-center neon-glow group-hover:scale-110 transition-all duration-300">
+                                <i class="fas fa-server text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-gradient">سرورهای مقاوم</h3>
+                                <p class="text-gray-400 leading-relaxed">
+                                    دیتاسنترهای توزیع شده در سراسر جهان با سیستم‌های ضد حمله. 
+                                    حتی در شرایط جنگ سایبری کار می‌کنه.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative slide-left stagger-2">
+                    <div class="glass-strong p-16 rounded-3xl neon-border neon-glow">
+                        <img src="C:\Users\daradege\Desktop\chapaar\logo.png" alt="chapaar" class="object-cover">
+                    </div>
+                    
+                    <div class="absolute -top-6 -left-6 w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center floating-animation">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center floating-animation" style="animation-delay: 2s;">
+                        <i class="fas fa-lock text-xl"></i>
+                    </div>
+                    <div class="absolute top-1/2 -right-8 w-10 h-10 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl flex items-center justify-center floating-animation" style="animation-delay: 4s;">
+                        <i class="fas fa-key"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="technology" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl md:text-7xl font-black mb-8 slide-in">
+                    <span class="text-gradient">فناوری پیشرفته</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto slide-in stagger-1">
+                    چاپار با استفاده از جدیدترین فناوری‌های دنیا ساخته شده تا بهترین تجربه رو برای شما فراهم کنه
+                </p>
+            </div>
+            
+            <div class="tech-grid mb-20 slide-in stagger-2">
+                <div class="tech-item hover-lift">
+                    <i class="fab fa-node-js text-4xl text-green-400 mb-4"></i>
+                    <span class="text-sm font-medium">Node.js</span>
+                </div>
+                <div class="tech-item hover-lift">
+                    <i class="fab fa-react text-4xl text-blue-400 mb-4"></i>
+                    <span class="text-sm font-medium">React Native</span>
+                </div>
+                <div class="tech-item hover-lift">
+                    <i class="fas fa-database text-4xl text-purple-400 mb-4"></i>
+                    <span class="text-sm font-medium">MongoDB</span>
+                </div>
+                <div class="tech-item hover-lift">
+                    <i class="fab fa-docker text-4xl text-blue-500 mb-4"></i>
+                    <span class="text-sm font-medium">Docker</span>
+                </div>
+                <div class="tech-item hover-lift">
+                    <i class="fab fa-aws text-4xl text-orange-400 mb-4"></i>
+                    <span class="text-sm font-medium">AWS</span>
+                </div>
+                <div class="tech-item hover-lift">
+                    <i class="fas fa-brain text-4xl text-pink-400 mb-4"></i>
+                    <span class="text-sm font-medium">AI/ML</span>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 slide-in stagger-3">
+                <div class="glass-strong p-8 rounded-3xl text-center hover-lift">
+                    <div class="text-5xl font-black text-gradient mb-4">10TB+</div>
+                    <h3 class="text-xl font-bold mb-2">پردازش روزانه</h3>
+                    <p class="text-gray-400">حجم داده‌ای که روزانه پردازش می‌کنیم</p>
+                </div>
+                <div class="glass-strong p-8 rounded-3xl text-center hover-lift">
+                    <div class="text-5xl font-black text-gradient mb-4">150+</div>
+                    <h3 class="text-xl font-bold mb-2">کشور</h3>
+                    <p class="text-gray-400">پوشش سرورهای ما در سراسر جهان</p>
+                </div>
+                <div class="glass-strong p-8 rounded-3xl text-center hover-lift">
+                    <div class="text-5xl font-black text-gradient mb-4">99.9%</div>
+                    <h3 class="text-xl font-bold mb-2">دقت AI</h3>
+                    <p class="text-gray-400">دقت هوش مصنوعی در تشخیص محتوا</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="py-32 px-6 bg-gradient-to-b from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl md:text-7xl font-black mb-8 slide-in">
+                    <span class="text-gradient">نظر کاربران</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto slide-in stagger-1">
+                    ببینید کاربران چاپار چه می‌گن
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="testimonial-card p-8 rounded-3xl hover-lift slide-in stagger-1">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center ml-4">
+                            <span class="font-bold">علی</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">علی صفامنش</h4>
+                            <p class="text-sm text-gray-400">برنامه‌نویس</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        "سرعت و امنیت چاپار فوق‌العادهست. هیچ پیامرسان دیگه‌ای این سطح از حفاظت رو نداره."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card p-8 rounded-3xl hover-lift slide-in stagger-2">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center ml-4">
+                            <span class="font-bold">آیدین</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">آیدین رهبران</h4>
+                            <p class="text-sm text-gray-400">برنامه نویس</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        "ویژگی‌های خلاقانه چاپار واقعاً شگفت‌انگیزه. کار با فایل‌های حجیم خیلی راحت شده."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card p-8 rounded-3xl hover-lift slide-in stagger-3">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center ml-4">
+                            <span class="font-bold">امیر</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">امیرحسین بهدادیان محمدزاده بلوچ</h4>
+                            <p class="text-sm text-gray-400">مدیر IT</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        "برای کسب‌وکارمون چاپار رو انتخاب کردیم. امنیت و قابلیت اعتمادش بی‌نظیره."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Epic CTA Section -->
+    <section class="py-32 px-6 bg-gradient-to-b from-black via-purple-900/20 to-black">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="mb-8 slide-in stagger-1">
+                <span class="inline-block glass-effect px-6 py-3 rounded-full text-lg font-medium">
+                    <i class="fas fa-crown ml-2 text-yellow-400"></i>
+                    رایگان برای همیشه
+                </span>
+            </div>
+            
+            <h2 class="text-6xl md:text-8xl font-black mb-8 slide-in stagger-2">
+                <span class="text-gradient">آماده تجربه آینده؟</span>
+            </h2>
+            
+            <p class="text-2xl md:text-3xl text-gray-300 mb-8 slide-in stagger-3">
+                همین الان چاپار رو دانلود کن و وارد دنیای جدید ارتباطات بشو
+            </p>
+            
+            <p class="text-lg text-gray-400 mb-16 max-w-3xl mx-auto leading-relaxed slide-in stagger-4">
+                بیش از 10 میلیون کاربر از سراسر جهان به چاپار اعتماد کردن. 
+                نوبت توست که بهترین تجربه پیامرسانی رو داشته باشی.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-8 justify-center items-center mb-16 slide-in stagger-5">
+                <button class="group bg-gradient-to-r from-purple-500 via-blue-500 to-indigo-600 px-16 py-6 rounded-full text-2xl font-bold hover:from-purple-600 hover:via-blue-600 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 pulse-glow neon-glow">
+                    <i class="fas fa-download ml-4 group-hover:ml-5 transition-all"></i>
+                    دانلود رایگان
+                </button>
+                <div class="flex flex-col items-center space-y-4">
+                    <div class="flex items-center space-x-6 space-x-reverse text-gray-400">
+                        <div class="flex items-center space-x-2 space-x-reverse">
+                            <i class="fab fa-android text-2xl text-green-400"></i>
+                            <span>Android</span>
+                        </div>
+                        <div class="flex items-center space-x-2 space-x-reverse">
+                            <i class="fab fa-apple text-2xl text-gray-300"></i>
+                            <span>iOS</span>
+                        </div>
+                        <div class="flex items-center space-x-2 space-x-reverse">
+                            <i class="fab fa-windows text-2xl text-blue-400"></i>
+                            <span>Windows</span>
+                        </div>
+                        <div class="flex items-center space-x-2 space-x-reverse">
+                            <i class="fab fa-apple text-2xl text-gray-300"></i>
+                            <span>macOS</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500">همه پلتفرم‌ها</p>
+                </div>
+            </div>
+            
+            <!-- Trust Indicators -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 slide-in stagger-6">
+                <div class="glass-effect p-6 rounded-2xl">
+                    <div class="text-2xl font-black text-gradient">256bit</div>
+                    <div class="text-gray-400 text-sm mt-1">رمزنگاری</div>
+                </div>
+                <div class="glass-effect p-6 rounded-2xl">
+                    <div class="text-2xl font-black text-gradient">10M+</div>
+                    <div class="text-gray-400 text-sm mt-1">کاربر</div>
+                </div>
+                <div class="glass-effect p-6 rounded-2xl">
+                    <div class="text-2xl font-black text-gradient">0</div>
+                    <div class="text-gray-400 text-sm mt-1">نقض امنیتی</div>
+                </div>
+                <div class="glass-effect p-6 rounded-2xl">
+                    <div class="text-2xl font-black text-gradient">24/7</div>
+                    <div class="text-gray-400 text-sm mt-1">پشتیبانی</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="glass-strong py-16 px-6 mt-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-5 gap-12 mb-16">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-6 space-x-reverse mb-8">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 via-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center pulse-glow neon-glow">
+                            <span class="text-2xl font-black">چ</span>
+                        </div>
+                        <div>
+                            <span class="text-3xl font-black text-gradient">چاپار</span>
+                            <div class="text-sm text-gray-400">نسل جدید پیامرسان</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed mb-8 max-w-md">
+                        پیامرسانی که آینده ارتباطات رو تعریف می‌کنه. با امنیت مطلق، سرعت بی‌نظیر و ویژگی‌های انقلابی.
+                    </p>
+                    <div class="flex space-x-4 space-x-reverse">
+                        <a href="#" class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center hover:scale-110 transition-all duration-300 neon-glow">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-500 rounded-xl flex items-center justify-center hover:scale-110 transition-all duration-300 neon-glow">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center hover:scale-110 transition-all duration-300 neon-glow">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center hover:scale-110 transition-all duration-300 neon-glow">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-bold text-xl mb-6 text-gradient">محصول</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors hover:translate-x-2 inline-block duration-300">ویژگی‌ها</a></li>
+                        <li><a href="#security" class="text-gray-400 hover:text-white transition-colors hover:translate-x-2 inline-block duration-300">امنیت</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-2 inline-block duration-300">دانلود</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-2 inline-block duration-300">API</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-2 inline-block duration-300">اپلیکیشن تحت وب</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-xl mb-6 text-gradient">پشتیبانی</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-2 inline-block duration-300">راهنما</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-2 inline-block duration-300">تماس با ما</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-2 inline-block duration-300">مرکز کمک</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-2 inline-block duration-300">وضعیت سرویس</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-2 inline-block duration-300">باگ ریپورت</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-xl mb-6 text-gradient">شرکت</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-2 inline-block duration-300">درباره ما</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-2 inline-block duration-300">وبلاگ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-2 inline-block duration-300">کریر</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-2 inline-block duration-300">سرمایه‌گذاران</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-2 inline-block duration-300">اخبار</a></li>
+                    </ul>
+                </div>
+
+                
+            </div>
+            <center><p dir="auto"> &copy; copyright chappar team 2025. </p> </center>
+            </div>
+        </footer>
+    </body>
+</html>
